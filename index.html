@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Subrat Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/fb31f8f535.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <h1>Portfolio.</h1>
+               <!---- <img src="images/logo.png" class="logo"> -->
+                <ul id="sidebar">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <!-- <li><a href="#services">Services</a></li> -->
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <p>Front-End Developer</p>
+                <h1>Hi,I'm <span>Subrat Sahoo</span></h1>
+            </div>
+        </div>
+    </div>
+    <!-----------about-------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <!--<div class="about-col-1">
+                    <img src="images/">
+                </div>-->
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I am Web Designer with efficient and knowlegeable coder with skills in HTML, CSS and JavaScript programming language.<br>
+                    Cordinated and collabrative team player with attention to detail,figma design skills and contribute to code been improvement initiatives UX improvement projects</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                        <p class="tab-links" onclick="opentab('certification')">Certification</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>UI/UX</span><br>Designing Web/app interfaces</li>
+                            <li><span>Web development</span><br>Web App development</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>Bachelor of Computer Applications</span><br>Guru Nanak College</li>
+                            <li><span>Master of Computer Applications</span><br>UCE(BIT Campus) Anna University</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="certification">
+                        <ul>
+                            <li><span>Google UX Design</span><br>Google certification (Coursera)</li>
+                            <li><span>Full stack Software developer</span><br>IBM certification (Coursera)</li>
+                            <li><span>Web development</span><br>Jhons Hopkins University (Coursera)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!----services--
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                    <h2>web design</h2>
+                    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <h2>web design</h2>
+                    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <h2>web design</h2>
+                    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <h2>web design</h2>
+                    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+                    <a href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+    <!--Portfolio-->
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">My Work</h1>
+            <div class="worklist">
+                <div class="work">
+                    <img src="images/work-1.png">
+                    <div class="layer">
+                        <h3>Youtube clone</h3>
+                        <p>Desgin of Youtube home page using HTML and CSS. </p>
+                        <a href="youtube/youtube.html" target="_blank">Lets see...</a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-2.png">
+                    <div class="layer">
+                        <h3>Social media app</h3>
+                        <p>User friendly UI designed prototype using Figma.</p>
+                        <a href="https://www.figma.com/proto/IFyAEG4UAc5x4WUYbJNdip/Chit-Chat?type=design&node-id=84-30&t=wCI9ps6cHIdOoxAq-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=84%3A30&mode=design" target="_blank">Lets see...</a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-3.png">
+                    <div class="layer">
+                        <h3>Hostel Booking website</h3>
+                        <p>User friendly UI designed prototype using Figma.</p>
+                        <a href="https://www.figma.com/proto/sRLlkxkjvqlUDkJO1opDNb/Hostel-Booking?type=design&t=cjXy9fk1gm9xs5Dh-1&scaling=min-zoom&page-id=0%3A1&node-id=1-2&mode=design" target="_blank">Lets see...</a>
+                    </div>
+                </div>
+            </div>
+          <!--  <a href="#" class="btn">Load More</a>-->
+        </div>
+    </div>
+
+    <!-----contact------>
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fa-solid fa-envelope"></i>subratsahoo0811@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>+91-9789591831</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/jagan.sahoo.9026"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/_subrat_08_?igsh=MWo1Zzk0djV1M283dQ=="><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/subrat-sahoo-152771200"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://wa.me/9789591831"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                    <a href="Resume.html" target="_blank" class="btn btn2">View CV</a>
+                    <a href="images/Resume Subrat.pdf" download class="btn btn2">Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="tel" name="Number" placeholder="Phone Number" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>copyright © all rights are reserved by Jack</p>
+        </div>
+    </div>
+
+<!--Javascript-->
+    <script>
+        var tablinks=document.getElementsByClassName("tab-links");
+        var tabcontents=document.getElementsByClassName("tab-contents");
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link")
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab")
+            }
+            event.currentTarget.classList.add("active-link")
+            document.getElementById(tabname).classList.add("active-tab")
+        }
+    </script>
+    <script>
+        var sidebar=document.getElementById("sidebar");
+        function openmenu(){
+            sidebar.style.right="0";
+        }
+        function closemenu(){
+            sidebar.style.right="-200px"
+        }
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby5B-pSUazxuJosM4j1Q2RP6ZxFDudltUtbG0eTy9AxlN-oTncLMzfipP0QQj2aIuI8/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg") 
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML="Message Sent Successfully"
+                setTimeout(function(){
+                    msg.innerHTML=""
+                },1000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
+</body>
+</html>
