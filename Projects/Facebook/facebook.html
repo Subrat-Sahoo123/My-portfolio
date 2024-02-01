@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*, *::after, *::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    color: #1c1e21;
+}
+
+main {
+    height: 90vh;
+    position: relative;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #ffffff;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.col-logo {
+    text-align: center;
+    padding: 10%;
+}
+
+.col-form {
+    text-align: center;
+    max-width: 80%;
+}
+
+.col-logo img {
+    max-width: 300px;
+}
+
+.col-logo h2 {
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 30px;
+    line-height: 16px;
+}
+
+.col-form .form-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 30px;
+}
+
+.col-form .form-container input, .col-form .form-container .btn-login {
+    width: 100%;
+    margin: 5px 0;
+    height: 32px;
+    font-size: 14px;
+}
+
+.col-form .form-container input {
+    border: 1px solid #dddfe2;
+    color: #1d2129;
+    padding: 0 8px;
+    outline: none;
+}
+
+.col-form .form-container input:focus {
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px #e7f3ff;
+}
+
+.col-form .form-container .btn-login {
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 8px 16px;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.col-form .form-container a {
+    color: #1877f2;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dadde1;
+    display: block;
+}
+
+.col-form .form-container a:hover {
+    text-decoration: underline;
+}
+
+.col-form .form-container .btn-new {
+    background-color: #42b72a;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 8px 16px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.col-form p {
+    font-size: 14px;
+}
+
+.col-form p a {
+    text-decoration: none;
+    color: #1c1e21;
+    font-weight: 600;
+}
+
+.col-form p a:hover {
+    text-decoration: underline;
+}
+
+footer .footer-contents {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+footer ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 10px;
+}
+
+footer ol:first-child {
+    border-bottom: 1px solid #dddfe2;
+}
+
+footer ol:first-child li:last-child button {
+    background-color: #f5f6f7;
+    border: 1px solid #ccd0d5;
+    outline: none;
+    color: #4b4f56;
+    padding: 0 8px;
+    font-weight: 700;
+}
+
+footer ol li {
+    padding-right: 10px;
+    font-size: 12px;
+    color: #385898;
+}
+
+footer ol li a {
+    text-decoration: none;
+    color: #385898;
+}
+
+footer ol li a:hover {
+    text-decoration: underline;
+}
+
+footer small {
+    font-size: 10px;
+    padding: 10px;
+}
+
+@media screen and (orientation:landscape) and (min-device-width:320px) and (max-device-width:780px) {
+    .row {
+        flex-direction: row;
+        justify-content: start;
+    }
+    .col-logo {
+        padding: 2%;
+        flex: 0 0 50%;
+        text-align: left;
+    }
+    .col-form {
+        flex: 0 0 40%;
+    }
+}
+
+@media screen and (orientation:portrait) and (min-device-width:700px) and (max-device-width:1100px) {
+    main {
+        height: 82vh;
+    }
+    footer {
+        height: 18vh;
+    }
+}
+
+@media screen and (min-device-width:992px) {
+    main {
+        height: 80vh;
+    }
+    footer {
+        height: 20vh;
+    }
+    .row {
+        flex-direction: row;
+        max-width: 1000px;
+    }
+    .col-logo {
+        padding: 0;
+        flex: 0 0 50%;
+        text-align: left;
+    }
+    .col-logo h2 {
+        font-size: 24px;
+        line-height: 24px;
+    }
+    .col-form {
+        flex: 0 0 40%;
+        max-width: 500px;
+    }
+    .col-form .form-container input, .col-form .form-container .btn-login {
+        font-size: 18px;
+        height: 45px;
+        margin: 8px 0;
+    }
+    .col-form p {
+        font-size: 16px;
+    }
+    footer ol li {
+        font-size: 14px;
+    }
+    footer small {
+        font-size: 13px;
+    }
+}
+
+.footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+        </style>
+</head>
+
+<body>
+    <main>
+        <div class="row">
+            <div class="col-logo">
+                <img src="fb_logo.svg" alt="Facebook Logo">
+                <h2>Facebook helps you connect and share with people in your life.</h2>
+            </div>
+            <div class="col-form">
+                <div class="form-container">
+                    <input type="text" placeholder="Email or Phone number">
+                    <input type="password" placeholder="Password">
+                    <button class="btn-login">Login
+                    </button>
+                    <a href="#">Forgot password?</a>
+                    <button class="btn-new">
+                        Create new Account
+                    </button>
+                </div>
+                <p><a href="#">Create a Page</a>
+                    for a celebrity, band or business</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-contents">
+            <ol>
+                <li>English (UK)</li>
+                <li><a href="#">മലയാളം</a></li>
+                <li><a href="#">தமிழ்</a></li>
+                <li><a href="#">తెలుగు</a></li>
+                <li><a href="#">বাংলা</a></li>
+                <li><a href="#">اردو</a></li>
+                <li><a href="#">हिन्दी</a></li>
+                <li><a href="#">ಕನ್ನಡ</a></li>
+                <li><a href="#">Español</a></li>
+                <li><a href="#">Português (Brasil)</a></li>
+                <li><a href="#">Français (France)</a></li>
+                <li><button>+</button></li>
+            </ol>
+            <ol>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Log In </a></li>
+                <li><a href="#">Messenger</a></li>
+                <li><a href="#">Facebook Lite</a></li>
+                <li><a href="#">Watch</a></li>
+                <li><a href="#">People</a></li>
+                <li><a href="#">Pages</a></li>
+                <li><a href="#">Page categories</a></li>
+                <li><a href="#">Places</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">Locations</a></li>
+                <li><a href="#">Marketplace</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">PayGroups</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Oculus</a></li>
+                <li><a href="#">Portal</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Local</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Log In </a></li>
+                <li><a href="#">Messenger</a></li>
+                <li><a href="#">Facebook Lite</a></li>
+                <li><a href="#">Watch</a></li>
+                <li><a href="#">People</a></li>
+                <li><a href="#">Pages</a></li>
+                <li><a href="#">Page categories</a></li>
+                <li><a href="#">Places</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">Locations</a></li>
+                <li><a href="#">Marketplace</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">PayGroups</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Oculus</a></li>
+                <li><a href="#">Portal</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Local</a></li>
+            </ol>
+            <small>Facebook &copy; 2021</small>
+        </div>
+    </footer>
+
+    <div class="footer">
+        <p>
+            All rights are reserved By Subrat.
+        </p>
+    </div>
+</body>
+
+</html>

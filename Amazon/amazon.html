@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon-like Product Listing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #232f3e;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #amazon-logo {
+            max-width: 150px;
+            margin-bottom: -10px;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #FF9900;
+            color: #232f3e;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .hamburger-menu {
+            cursor: pointer;
+            font-size: 28px;
+            margin-right: 20px;
+        }
+
+        nav {
+            background-color: #131921;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 200px;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            position: relative;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            height: fit-content;
+        }
+
+        section {
+            width: 100%; /* Set a width for the section */
+            overflow-x: auto; /* Enable horizontal scrolling */
+            white-space: nowrap; /* Prevent line breaks in the container */
+            border: 1px solid #ddd;
+        }
+
+        section::-webkit-scrollbar{
+            display: none;
+        }
+
+        .product-container1 {
+            display: flex;
+            padding: 20px;
+        }
+
+        .product-container1:nth-child(16){
+            margin-right: 0;
+        }
+
+        .product1 {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            padding: 20px;
+            min-width: 160px;
+            height: 200px;
+            display: inline-block;
+            white-space: wrap; /* Display products in a row */
+        }
+
+        img {
+            max-width: 100%;
+            height: 50%;
+        }
+
+        footer {
+            background-color: #232f3e;
+            color: #fff;
+            text-align: center;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            padding-top: 10px;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+    /* Existing styles... */
+
+    /* Media query for tablets (e.g., iPad) */
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-bar {
+            margin: 10px 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            margin-right: 0;
+        }
+
+        .hamburger-menu {
+            margin-top: 10px;
+        }
+
+        nav {
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            text-align: center;
+        }
+
+        .menu-overlay {
+            display: none;
+        }
+
+        nav a {
+            margin: 10px;
+        }
+
+        .product-container {
+            padding: 10px;
+        }
+
+        .product {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 10px 0;
+        }
+    }
+
+    /* Media query for mobile devices */
+    @media (max-width: 480px) {
+        header {
+            padding: 5px;
+        }
+
+        #amazon-logo {
+            max-width: 120px;
+        }
+
+        .search-bar {
+            margin: 10px 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            margin-right: 0;
+        }
+
+        .hamburger-menu {
+            margin-top: 10px;
+        }
+
+        nav {
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 5px;
+        }
+
+        .product-container {
+            padding: 10px;
+        }
+
+        .product {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 10px 0;
+        }
+
+        .popup {
+            padding: 10px;
+        }
+        .one{
+            display: none;
+        }
+    }
+
+    .one {
+            background-color: #131921;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+     .two {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+
+        .two:hover {
+            text-decoration: underline;
+        }
+</style>
+</head>
+<body>
+
+    <header>
+        <img src="amazonlogo1.png" alt="Amazon Logo" id="amazon-logo">
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <div class="one">
+        <a class="two" href="#">Home</a>
+        <a class="two" href="#">Shop by Category</a>
+        <a class="two" href="#">Today's Deals</a>
+        <a class="two" href="#">Your Amazon.com</a>
+        <a class="two" href="#">Gift Cards</a>
+        <a class="two" href="#">Sell</a>
+        <a class="two" href="#">Help</a>
+    </div>
+
+    <nav>
+        <a href="#"><span class="icon">&#x1F3E0;</span> Home</a>
+        <a href="#"><span class="icon">&#x1F464;</span> Profile</a>
+        <a href="#"><span class="icon">&#x1F464;</span> Account</a>
+        <a href="#"><span class="icon">&#x1F4C2;</span> Address</a>
+        <a href="#"><span class="icon">&#x1F4C3;</span> Orders</a>
+        <a href="#"><span class="icon">&#x1F6D2;</span> Cart</a>
+        <a href="#"><span class="icon">&#x2699;</span> Settings</a>
+    </nav>
+
+    <div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+
+    <div class="product-container">
+        <div class="product">
+            <img src="1.jpeg" alt="Product 1">
+            <h2>HP Victus Gaming Laptop</h2>
+            <p>HP Victus Gaming Laptop, AMD Ryzen 7 7840HS AI Powered, 6GB RTX 3050 GPU, 16.1-inch (40.9 cm), 95W TGP, FHD, IPS, 144Hz, 300 nits, 16GB DDR5, 1TB SSD, RGB Backlit KB (MSO, Blue, 2.29 kg), s0094AX</p>
+            <p>$2020.99</p>
+            <button onclick="addToCart('HP Victus Gaming Laptop', 2020.99)">Purchase</button>
+        </div>
+
+        <div class="product">
+            <img src="3.jpeg" alt="Product 2">
+            <h2>Acer Nitro 16</h2>
+            <p>Acer Nitro 16 Gaming Laptop AMD Ryzen™ 7 7840HS Octa Core Processor (16GB/ 512 GB SSD/NVIDIA GeForce RTX 4060 8GB Graphics/Windows 11 Home) AN16-41 with 40.64 cm (16") IPS Display</p>
+            <p>$2996.99</p>
+            <button onclick="addToCart('Acer Nitro 16', 2996.99)">Purchase</button>
+        </div>
+
+        <div class="product">
+            <img src="4.jpeg" alt="Product 1">
+            <h2>MSI Katana 15</h2>
+            <p>MSI Katana 15, Intel 12th Gen. i7-12650H, 40CM QHD 165Hz Gaming Laptop (8GBx2/1TB NVMe SSD/Windows 11 Home/NVIDIA GeForce RTX 4070,GDDR6 8GB/Black/2.25Kg), B12VGK-1295IN with 40.64 cm (16") IPS Display</p>
+            <p>$2399.99</p>
+            <button onclick="addToCart('MSI Katana 15', 2399.99)">Purchase</button>
+        </div>
+
+        <div class="product">
+            <img src="5.jpeg" alt="Product 2">
+            <h2>MSI Sword 15 A12VF</h2>
+            <p>MSI Sword 15 A12VF, Intel 12th Gen. i7-12650H, 40CM FHD 144Hz Gaming Laptop (16GB/1TB NVMe SSD/Windows 11 Home/Nvidia GeForce RTX4050, 6GB GDDR6/White/2.25Kg), A12VE-402IN (16") IPS Display</p>
+            <p>$2999.99</p>
+            <button onclick="addToCart('MSI Sword 15 A12VF', 2999.99)">Purchase</button>
+        </div>
+    </div>
+    <h1 style="margin-left: 30px;">Recent searches</h1>
+    <section>
+        <div class="product-container1">
+            <div class="product1">
+                <img src="pen1.jpeg" alt="Product 1">
+                <h3>Pendrive 128GB</h3>
+                <p>$19.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="bag.jpeg" alt="Product 2">
+                <h3>School Bag</h3>
+                <p>$29.99</p>
+            </div>
+            <div class="product1">
+                <img src="phone.jpeg" alt="Product 1">
+                <h3>Iqoo Neo 7</h3>
+                <p>$199.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="buds.jpeg" alt="Product 2">
+                <h3>Jack Earbuds</h3>
+                <p>$44.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="pen1.jpeg" alt="Product 1">
+                <h3>Pendrive 128GB</h3>
+                <p>$19.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="bag.jpeg" alt="Product 2">
+                <h3>School Bag</h3>
+                <p>$29.99</p>
+            </div>
+            <div class="product1">
+                <img src="phone.jpeg" alt="Product 1">
+                <h3>Iqoo Neo 7</h3>
+                <p>$199.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="buds.jpeg" alt="Product 2">
+                <h3>Jack Earbuds</h3>
+                <p>$44.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="pen1.jpeg" alt="Product 1">
+                <h3>Pendrive 128GB</h3>
+                <p>$19.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="bag.jpeg" alt="Product 2">
+                <h3>School Bag</h3>
+                <p>$29.99</p>
+            </div>
+            <div class="product1">
+                <img src="phone.jpeg" alt="Product 1">
+                <h3>Iqoo Neo 7</h3>
+                <p>$199.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="buds.jpeg" alt="Product 2">
+                <h3>Jack Earbuds</h3>
+                <p>$44.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="pen1.jpeg" alt="Product 1">
+                <h3>Pendrive 128GB</h3>
+                <p>$19.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="bag.jpeg" alt="Product 2">
+                <h3>School Bag</h3>
+                <p>$29.99</p>
+            </div>
+            <div class="product1">
+                <img src="phone.jpeg" alt="Product 1">
+                <h3>Iqoo Neo 7</h3>
+                <p>$199.99</p>
+            </div>
+
+            <div class="product1">
+                <img src="buds.jpeg" alt="Product 2">
+                <h3>Jack Earbuds</h3>
+                <p>$44.99</p>
+            </div>
+        </div>
+    </section>
+
+    <h1 style="margin-left: 30px;">Top Trendings deals for you upto 60% off</h1><hr>
+
+    <div class="product-container">
+        <div class="product">
+            <img src="1.jpeg" alt="Product 1">
+            <h2>HP Victus Gaming Laptop</h2>
+            <p>HP Victus Gaming Laptop, AMD Ryzen 7 7840HS AI Powered, 6GB RTX 3050 GPU, 16.1-inch (40.9 cm), 95W TGP, FHD, IPS, 144Hz, 300 nits, 16GB DDR5, 1TB SSD, RGB Backlit KB (MSO, Blue, 2.29 kg), s0094AX</p>
+            <p>$2020.99</p>
+            <button onclick="addToCart('HP Victus Gaming Laptop', 2020.99)">Purchase</button>
+        </div>
+
+        <div class="product">
+            <img src="3.jpeg" alt="Product 2">
+            <h2>Acer Nitro 16</h2>
+            <p>Acer Nitro 16 Gaming Laptop AMD Ryzen™ 7 7840HS Octa Core Processor (16GB/ 512 GB SSD/NVIDIA GeForce RTX 4060 8GB Graphics/Windows 11 Home) AN16-41 with 40.64 cm (16") IPS Display</p>
+            <p>$2996.99</p>
+            <button onclick="addToCart('Acer Nitro 16', 2996.99)">Purchase</button>
+        </div>
+
+        <div class="product">
+            <img src="4.jpeg" alt="Product 1">
+            <h2>MSI Katana 15</h2>
+            <p>MSI Katana 15, Intel 12th Gen. i7-12650H, 40CM QHD 165Hz Gaming Laptop (8GBx2/1TB NVMe SSD/Windows 11 Home/NVIDIA GeForce RTX 4070,GDDR6 8GB/Black/2.25Kg), B12VGK-1295IN with 40.64 cm (16") IPS Display</p>
+            <p>$2399.99</p>
+            <button onclick="addToCart('MSI Katana 15', 2399.99)">Purchase</button>
+        </div>
+
+        <div class="product">
+            <img src="5.jpeg" alt="Product 2">
+            <h2>MSI Sword 15 A12VF</h2>
+            <p>MSI Sword 15 A12VF, Intel 12th Gen. i7-12650H, 40CM FHD 144Hz Gaming Laptop (16GB/1TB NVMe SSD/Windows 11 Home/Nvidia GeForce RTX4050, 6GB GDDR6/White/2.25Kg), A12VE-402IN (16") IPS Display</p>
+            <p>$2999.99</p>
+            <button onclick="addToCart('MSI Sword 15 A12VF', 2999.99)">Purchase</button>
+        </div>
+    </div>
+
+   <footer>
+        &copy; 2024 Amazon All rights reserved.
+   </footer>
+
+    <div class="popup-overlay" id="overlay"></div>
+
+    <div id="purchasePopup" class="popup">
+        <h2>Purchase Confirmation</h2>
+        <p>Thank you for your purchase!</p>
+        <p>Product: <span id="popupProductName"></span></p>
+        <p>Price: $<span id="popupProductPrice"></span></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+</body>
+</html>
+
+<script>
+    function addToCart(productName, price) {
+        document.getElementById('popupProductName').innerText = productName;
+        document.getElementById('popupProductPrice').innerText = price.toFixed(2);
+        document.getElementById('purchasePopup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('purchasePopup').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    function toggleMenu() {
+        var menu = document.querySelector('nav');
+        var overlay = document.getElementById('menu-overlay');
+        if (menu.style.display === 'flex') {
+            closeMenu();
+        } else {
+            menu.style.display = 'flex';
+            overlay.style.display = 'block';
+        }
+    }
+
+    function closeMenu() {
+        var menu = document.querySelector('nav');
+        var overlay = document.getElementById('menu-overlay');
+        menu.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+</script>
